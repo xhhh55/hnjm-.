@@ -1,0 +1,961 @@
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persönliche Website | Autopflegespezialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Design */
+        header {
+            background: linear-gradient(to right, #000, #222);
+            padding: 20px 0;
+            border-bottom: 2px solid #ff0000;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #ff0000;
+            margin-left: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo-text span {
+            color: #ff0000;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3') no-repeat center center/cover;
+            position: relative;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(255,0,0,0.5);
+        }
+        
+        .hero h1 span {
+            color: #ff0000;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff0000;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin: 10px;
+            border: 2px solid #ff0000;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #fff;
+        }
+        
+        .btn-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+
+
+        /* Allgemeine Abschnitte */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #ff0000;
+        }
+        
+        /* Fähigkeiten Abschnitt */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff0000;
+            box-shadow: 0 10px 20px rgba(255,0,0,0.1);
+        }
+        
+        .skill-card i {
+            font-size: 3rem;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .skill-card p {
+            color: #ccc;
+        }
+        
+        /* Zertifikate Abschnitt */
+        .certificates {
+            background: #111;
+        }
+        
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .certificate-card {
+            background: #000;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .certificate-card:hover {
+            transform: scale(1.03);
+            border-color: #ff0000;
+        }
+        
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #ff0000;
+        }
+        
+        .certificate-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .certificate-card .issuer {
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .certificate-card .date {
+            color: #aaa;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .certificate-image {
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        
+        .certificate-image:hover {
+            transform: scale(1.05);
+            border-color: #ff0000;
+        }
+        
+        /* Unternehmen Abschnitt */
+        .companies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .company-card {
+            background: #000;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .company-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255,0,0,0.1);
+        }
+        
+        .company-name {
+            background: #ffcc00;
+            color: #ff0000;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .company-position {
+            color: #ff0000;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .company-period {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        
+        /* Galerie Abschnitt */
+        .gallery {
+            background: #111;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Videos Abschnitt */
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-card {
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255,0,0,0.3);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,0,0,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .video-card:hover .play-icon {
+            background: #ff0000;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .video-info p {
+            color: #ccc;
+        }
+        
+        /* Kontakt Abschnitt */
+        .contact {
+            background: #111;
+            text-align: center;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #ff0000;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: #fff;
+            color: #ff0000;
+        }
+        
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 2px solid #ff0000;
+        }
+        
+        footer p {
+            color: #aaa;
+        }
+        
+        /* Responsive Design für Mobile */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 130px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            /* Verbesserungen für Mobile */
+            .skills-container, 
+            .certificates-container,
+            .companies-container,
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-card,
+            .certificate-card,
+            .company-card {
+                padding: 20px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 2rem;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .video-thumbnail {
+                height: 200px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+                margin: 8px auto;
+                display: block;
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .skill-card i {
+                font-size: 2.5rem;
+            }
+            
+            .skill-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .certificate-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .company-name {
+                font-size: 1.1rem;
+                padding: 12px;
+            }
+            
+            .video-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .contact-info p {
+                font-size: 1rem;
+            }
+            
+            nav ul li {
+                margin: 3px 8px;
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="logo-text">
+                        lamjed <span>bouhouchi</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Startseite</a></li>
+                        <li><a href="#skills">Fähigkeiten</a></li>
+                        <li><a href="#certificates">Zertifikate</a></li>
+                        <li><a href="#gallery">Portfolio</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#companies">Unternehmen</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Experte für <span>Autowäsche und Politur</span></h1>
+                <p>Mehr als 10 Jahre Erfahrung in der professionellen Autowäsche und Politur mit modernsten Techniken und hochwertigen Materialien</p>
+                <a href="#gallery" class="btn">Mein Portfolio</a>
+                <a href="#videos" class="btn btn-outline">Videos ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fähigkeiten Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meine beruflichen Fähigkeiten</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fas fa-shower"></i>
+                    <h3>Komplette Außenwäsche</h3>
+                    <p>Umfassende Außenwäsche mit hochwertigen Materialien und fortschrittlichen Methoden, die eine saubere Autowäsche ohne Kratzer oder Beeinträchtigung des Glanzes gewährleisten</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Trocknung mit frischer Luft</h3>
+                    <p>Fortschrittliche Trocknungstechnik mit frischer Luft, um Wasserflecken zu vermeiden und den Glanz des Autos zu erhalten</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-spray-can"></i>
+                    <h3>Professionelle Politur</h3>
+                    <p>Spezialisierte Polierdienste zur Entfernung leichter Kratzer und zur Wiederherstellung des ursprünglichen Lackglanzes</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-soap"></i>
+                    <h3>Komplette Innenreinigung</h3>
+                    <p>Tiefenreinigung von Teppichen, Sitzen, Fenstern sowie Reinigung und Desodorierung des Klimasystems mit Spezialgeräten</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-prescription-bottle"></i>
+                    <h3>Entfernung hartnäckiger Flecken</h3>
+                    <p>Entfernung aller Arten von hartnäckigen Flecken von Sitzen und Teppichen mit sicheren und wirksamen Materialien</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-car-battery"></i>
+                    <h3>Zusätzliche Dienstleistungen</h3>
+                    <p>Reifenpolitur, Motorreinigung, Lackschutz, Geruchsentfernung und Scheibenpolitur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zertifikate Section -->
+    <section class="certificates" id="certificates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meine beruflichen Zertifikate</h2>
+            </div>
+            <div class="certificates-container">
+                <div class="certificate-card">
+                    <h3>Diplom in Fahrzeugpflege</h3>
+                    <span class="issuer">Internationale Akademie für Fahrzeugpflege</span>
+                    <span class="date">2020</span>
+                    <p>Spezialisiertes Programm in den neuesten Techniken der Autowäsche, Politur, Lackpflege und Entfernung von leichten Kratzern</p>
+                    <img src="photo_2025-08-06_23-52-43.jpg" alt="Zertifikat in Fahrzeugpflege" class="certificate-image">
+                </div>
+                <div class="certificate-card">
+                    <h3>Zertifikat als Fachkraft für Fleckenentfernung</h3>
+                    <span class="issuer">Ausbildungszentrum für Autopflege</span>
+                    <span class="date">2018</span>
+                    <p>Fortgeschrittenes Training zur Entfernung schwierigster Flecken von Ledersitzen und Stoffbezügen mit sicheren und effektiven Materialien</p>
+                    <img src="photo_2025-08-06_23-52-39.jpg" alt="Fleckenentfernung Zertifikat" class="certificate-image">
+                </div>
+                <div class="certificate-card">
+                    <h3>Zertifikat als Fahrzeugpolierer</h3>
+                    <span class="issuer">Europäisches Institut für Fahrzeugpflege</span>
+                    <span class="date">2017</span>
+                    <p>Fortgeschrittenes Schulungsprogramm in professionellen Politurtechniken und dem Einsatz modernster Poliergeräte</p>
+                    <img src="photo_2025-08-06_23-52-27.jpg" alt="Autopolitur Zertifikat" class="certificate-image">
+                </div>
+                <div class="certificate-card">
+                    <h3>Zertifikat für sicheren Umgang mit Chemikalien</h3>
+                    <span class="issuer">Allgemeine Berufsgenossenschaft für Arbeitssicherheit</span>
+                    <span class="date">2016</span>
+                    <p>Zertifikat für den sicheren Umgang mit in der Autopflege verwendeten Chemikalien und Umweltschutz</p>
+                    <img src="photo_2025-08-07_13-37-28.jpg" alt="Sicherheit Zertifikat" class="certificate-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mein Portfolio</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="photo_2025-08-07_13-37-36.jpg" alt="Luxusautowäsche">
+                    <div class="gallery-caption">Luxusautowäsche</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-08-07_13-37-48.jpg" alt="Professionelle Politur">
+                    <div class="gallery-caption">Professionelle Politur</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-08-07_13-37-56.jpg" alt="Komplette Innenreinigung">
+                    <div class="gallery-caption">Komplette Innenreinigung</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-04-14_22-04-56.jpg" alt="Kompletter Waschervice">
+                    <div class="gallery-caption">Kompletter Waschervice</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-04-14_22-04-32.jpg" alt="Polierergebnis">
+                    <div class="gallery-caption">Polierergebnis</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-04-14_22-04-26.jpg" alt="Motorreinigung">
+                    <div class="gallery-caption">Motorreinigung</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-04-14_22-05-11.jpg" alt="Vorher und Nachher">
+                    <div class="gallery-caption">Vorher und Nachher</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_2025-04-14_22-04-39.jpg" alt="Professionelle Teamarbeit">
+                    <div class="gallery-caption">Professionelle Teamarbeit</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Videos Section -->
+    <section id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Erklärvideos</h2>
+            </div>
+            <div class="videos-container">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="video_2025-04-14_22-05-24.mp4" alt="Waschprozess">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Kompletter Waschvorgang</h3>
+                        <p>Video zeigt die Schritte der Komplettwäsche von Autos mit hoher Professionalität</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="video_2025-05-13_14-11-50.mp4" alt="Professionelle Politur">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Professionelle Politur</h3>
+                        <p>Wie man ein Auto mit den neuesten Techniken poliert, um das beste Ergebnis zu erzielen</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="video_2025-08-07_13-46-21.mp4" alt="Innenreinigung">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Komplette Innenreinigung</h3>
+                        <p>Methode zur Reinigung der Autositze, Teppiche und Entfernung hartnäckiger Flecken</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unternehmen Section -->
+    <section id="companies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meine Berufserfahrung</h2>
+            </div>
+            <div class="companies-container">
+                <div class="company-card">
+                    <div class="company-name">Mercedes Benz</div>
+                    <div class="company-position">Leiter der Politurabteilung</div>
+                    <div class="company-period">2020 - Heute</div>
+                    <p>Leitung eines Teams von 12 Mitarbeitern und Bereitstellung fortschrittlicher Polierdienstleistungen für Luxusautos</p>
+                </div>
+                <div class="company-card">
+                    <div class="company-name">Best Car Wash</div>
+                    <div class="company-position">Spezialist für Waschen und Polieren</div>
+                    <div class="company-period">2017 - 2020</div>
+                    <p>Bereitstellung professioneller Wasch- und Polierdienstleistungen und Schulung neuer Mitarbeiter in den neuesten Techniken</p>
+                </div>
+                <div class="company-card">
+                    <div class="company-name">Delta Zentrum für Autopflege</div>
+                    <div class="company-position">Fachkraft für erweitertes Waschen</div>
+                    <div class="company-period">2014 - 2017</div>
+                    <p>Durchführung erweiterter Wascharbeiten, Innenreinigung von Autos und Bereitstellung von Fleckenentfernungsdienstleistungen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kontaktieren Sie mich</h2>
+            </div>
+            <div class="contact-info">
+                <p>Möchten Sie professionelle Wasch- und Polierdienstleistungen für Ihr Auto? Kontaktieren Sie mich jetzt!</p>
+                <p><i class="fas fa-phone"></i> Mobil: +49 163 1666435</p>
+                <p><i class="fas fa-envelope"></i> E-Mail: aufbereitung.bouhouchi@gmail.com</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-snapchat"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Alle Rechte vorbehalten &copy; 2023 | Website von Lamjed Bouhouchi - Experte für Autowäsche und Politur</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Scroll-Effekt für Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = '#000';
+                header.style.boxShadow = '0 2px 10px rgba(255, 0, 0, 0.3)';
+            } else {
+                header.style.backgroundColor = 'transparent';
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // Animationen beim Scrollen
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.skill-card, .certificate-card, .company-card, .gallery-item, .video-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
